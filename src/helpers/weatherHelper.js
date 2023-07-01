@@ -1,6 +1,6 @@
 const request = require('request');
 
-function handleWeather(interaction) {
+function weatherHelper(interaction) {
     var location = interaction.options.getString('location').toLowerCase();
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=${process.env.OPENWEATHERMAP_KEY}`;
 
@@ -26,5 +26,5 @@ function handleWeather(interaction) {
 }
 
 module.exports = {
-    handleWeather,
+    weatherHelper,
 };

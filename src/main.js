@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { ActivityType, Client, GatewayIntentBits } = require('discord.js');
-const { handleWeather } = require('./helpers/weatherHelper.js');
+const { weatherHelper } = require('./helpers/weatherHelper.js');
 
 const client = new Client({
     intents: [
@@ -33,7 +33,7 @@ client.on('messageCreate', (message) => {
     // check whether the author of the message is the bot itself
     if (message.author.bot) return;
 
-    if (message.content.toLowerCase().includes('hello') || message.content.toLowerCase().includes('hi') || message.content.toLowerCase().includes('hey')) {
+    if (message.content.toLowerCase().includes('hello') || message.content.toLowerCase().includes('hey')) {
         message.reply(`Hello, ${message.author}!\nType /weather <location> to get real-time weather information for a given location.`);
     }
 });
@@ -46,7 +46,7 @@ client.on('interactionCreate', async (interaction) => {
         await interaction.reply(`The square root of ${number} is ${Math.sqrt(number)}.`);
     }
     else if (interaction.commandName === 'weather') {
-        handleWeather(interaction);
+        weatherHelper(interaction);
     }
 });
 
