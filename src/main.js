@@ -33,7 +33,7 @@ client.on('messageCreate', (message) => {
     // check whether the author of the message is the bot itself
     if (message.author.bot) return;
 
-    if (message.content.toLowerCase().includes('hello') || message.content.toLowerCase().includes('hey')) {
+    if (message.content.toLowerCase().includes('hello') || message.content.toLowerCase().includes('hey') || message.content.toLowerCase().includes('hi')) {
         message.reply(`Hello, ${message.author}!\nType /weather <location> to get real-time weather information for a given location.`);
     }
 });

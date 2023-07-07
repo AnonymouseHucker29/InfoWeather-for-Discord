@@ -2,6 +2,7 @@ const request = require('request');
 
 function weatherHelper(interaction) {
     var location = interaction.options.getString('location').toLowerCase();
+
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=${process.env.OPENWEATHERMAP_KEY}`;
 
     request(apiUrl, async (error, response, body) => {
@@ -18,7 +19,9 @@ function weatherHelper(interaction) {
             // Kelvin to Fahrenheit conversion
             const fahrenheit = Math.round((weatherData.main.temp - 273.15) * 9 / 5 + 32);
 
-            await interaction.reply(`The weather in ${location.charAt(0).toUpperCase() + location.slice(1)}, ${weatherData.sys.country} is ${celsius}°C or ${fahrenheit}°F with ${weatherData.weather[0].description}.`);
+            const desc = weatherData.weather[0].description;
+
+            await interaction.reply(`The weather in ${location.charAt(0).toUpperCase() + location.slice(1)}, ${weatherData.sys.country} is ${celsius}°C or ${fahrenheit}°F having ${desc}.`);
         } else {
             await interaction.reply(`Sorry, I couldn't find the weather for ${location}.`);
         }

@@ -1,6 +1,6 @@
 {
   "name": "infoweather-discord",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A discord bot that displays weather information for a given location.",
   "main": "src/main.js",
   "scripts": {
