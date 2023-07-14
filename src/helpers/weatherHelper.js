@@ -20,8 +20,9 @@ function weatherHelper(interaction) {
             const fahrenheit = Math.round((weatherData.main.temp - 273.15) * 9 / 5 + 32);
 
             const desc = weatherData.weather[0].description;
+            const lat = weatherData.coord.lat, lon = weatherData.coord.lon;
 
-            await interaction.reply(`The weather in ${location.charAt(0).toUpperCase() + location.slice(1)}, ${weatherData.sys.country} is ${celsius}°C or ${fahrenheit}°F having ${desc}.`);
+            await interaction.reply(`The weather in ${weatherData.name}, ${weatherData.sys.country} (${lat}, ${lon}) is ${celsius}°C or ${fahrenheit}°F having ${desc}.`);
         } else {
             await interaction.reply(`Sorry, I couldn't find the weather for ${location}.`);
         }
